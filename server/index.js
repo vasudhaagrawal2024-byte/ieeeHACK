@@ -8,22 +8,42 @@ dotenv.config()
 
 const app = express()
 
-// 🔴 MUST BE BEFORE ROUTES
-app.use(cors())
+/* ================= CORS CONFIG ================= */
+// Allow Vercel frontend + local dev
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://ieee-hack-eight.vercel.app",
+      "https://ieee-hack-9v5kj0dt-vasudha-agrawals-projects.vercel.app",
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+)
+
+/* ================= MIDDLEWARE ================= */
 app.use(express.json())
 
+/* ================= ROUTES ================= */
 app.use("/api/register", registrationRoutes)
 
 app.get("/", (req, res) => {
   res.send("Backend running 🚀")
 })
 
+/* ================= DATABASE + SERVER ================= */
+const PORT = process.env.PORT || 5000
+
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("MongoDB connected ✅")
-    app.listen(5000, () => {
-      console.log("Server running on port 5000")
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`)
     })
   })
   .catch((err) => {
