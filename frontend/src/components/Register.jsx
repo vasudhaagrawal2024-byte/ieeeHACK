@@ -23,7 +23,7 @@ export default function Register() {
       setLoading(true)
 
       const res = await fetch(
-  "https://ieeehack-backend.onrender.com/api/register",
+  "https://ieee-hack-backend.onrender.com/api/register",
   {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -182,5 +182,6 @@ function InputField({ icon: Icon, placeholder, onChange }) {
     </div>
   )
 }
+
 
 
