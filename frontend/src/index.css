@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== THEME VARIABLES ===== */
+:root {
+  --bg-main: #000000;
+  --bg-secondary: #0b1020;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --accent: #6366f1;
+}
+
+html.light {
+  --bg-main: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --text-main: #02050e;
+  --text-muted: #475569;
+  --accent: #4f46e5;
+}
+
+/* Apply globally */
+
+
+body {
+  
+  background-color: black;
+  color: white;
+  max-width: 100%;
+  scroll-snap-type: y proximity;
+  overflow-x: hidden;
+}
+
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes floatSlow {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+  100% { transform: translateY(0); }
+}
+
+/* Clamp oversized absolute elements on mobile */
+@media (max-width: 768px) {
+  [class*="w-["] {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+
+
