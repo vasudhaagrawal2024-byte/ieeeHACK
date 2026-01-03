@@ -1,0 +1,142 @@
+/* === KEYBOARD BACKGROUND === */
+
+.keyboard-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+
+  perspective: 1400px;
+}
+
+/* Tilted keyboard plane */
+.keyboard {
+  position: absolute;
+  bottom: -120px;
+  left: 50%;
+  transform:
+    translateX(-50%)
+    rotateX(60deg);
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+
+  width: 110%;
+  padding: 100px;
+
+  transform-style: preserve-3d;
+}
+
+/* === INDIVIDUAL KEYS === */
+
+.key {
+  height: 60px;
+  border-radius: 10px;
+
+  background:
+    linear-gradient(145deg, #151515, #0b0b0b);
+
+  /* KEY DEPTH */
+  box-shadow:
+    0 10px 0 #050505,
+    0 18px 28px rgba(0, 0, 0, 0.85);
+
+  transform: translateZ(0px);
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.12s ease;
+}
+
+/* === PRESS EFFECT === */
+.key:hover {
+  transform: translateZ(-12px);
+
+  box-shadow:
+    0 4px 0 #050505,
+    0 8px 14px rgba(0, 0, 0, 0.7);
+
+  background:
+    linear-gradient(145deg, #1d1d1d, #0f0f0f);
+}
+
+/* OPTIONAL: subtle key highlight */
+.key::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.06),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* === LETTER KEYS === */
+.key-letter {
+  background: linear-gradient(145deg, #1b1b1b, #0f0f0f);
+}
+
+/* Text inside key */
+.key-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.75);
+
+  transform: translateZ(18px);
+  pointer-events: none;
+}
+
+/* Press animation on load */
+.key-press {
+  transform: translateZ(-14px) !important;
+  box-shadow:
+    0 4px 0 #050505,
+    0 8px 14px rgba(0, 0, 0, 0.7);
+}
+/* === LETTER KEYS (ieeeHACK) === */
+.key-letter {
+  background: linear-gradient(145deg, #222, #0e0e0e);
+}
+
+/* Bold, visible text */
+.key-text {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 900;              /* 🔥 VERY BOLD */
+  font-size: 18px;               /* 🔥 CLEAR */
+  letter-spacing: 0.12em;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  text-transform: uppercase;
+  transform: translateZ(20px);
+
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Press animation (ONLY for ieeeHACK keys) */
+.key-press {
+  transform: translateZ(-16px) !important;
+
+  box-shadow:
+    0 4px 0 #050505,
+    0 8px 14px rgba(0, 0, 0, 0.75);
+}
