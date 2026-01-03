@@ -23,15 +23,14 @@ export default function Register() {
       setLoading(true)
 
       const res = await fetch(
-  `${import.meta.env.VITE_API_URL}/api/register`,
+  "https://ieeehack-backend.onrender.com/api/register",
   {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(form),
   }
 )
+
 , {
         method: "POST",
         headers: {
@@ -183,4 +182,5 @@ function InputField({ icon: Icon, placeholder, onChange }) {
     </div>
   )
 }
+
 
